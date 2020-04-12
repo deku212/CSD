@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, StatusBar} from 'react-native';
 
 export default class LoginScreen extends Component {
   constructor(props) {
@@ -10,6 +10,7 @@ export default class LoginScreen extends Component {
   render() {
     return (
       <View>
+        <StatusBar translucent={true} backgroundColor={'white'} />
         <Text> LoginScreen </Text>
       </View>
     );
