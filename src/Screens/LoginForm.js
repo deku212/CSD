@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, Image, TextInput, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
 import auth from '@react-native-firebase/auth';
+import { Value } from 'react-native-reanimated';
 
 export default class LoginForm extends Component {
 constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {email:'',password:''};
   }
-  login=(email,password)=>{
-      auth().signInWithEmailAndPassword(email, password)
+  login=()=>{
+      auth().signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(()=>{
         console.log('User has logged in successfully');
         })
@@ -19,8 +20,8 @@ constructor(props) {
             console.error(error);
           });
   } 
-  register=(email,password)=>{
-      auth().createUserWithEmailAndPassword(email, password)
+  register=()=>{
+      auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
       .then(() => {
         console.log('User account created & signed in!');
       })
@@ -42,6 +43,7 @@ constructor(props) {
                 <TextInput 
                 placeholder="Username or Email"
                 placeholderTextColor='rgba(255,255,255,0.7)'
+                onChangeText={(Value)=>this.setState({email:Value})}
                 returnKeyType="next"
                 onSubmitEditing={() => this.passwordInput.focus()}
                 keyboardType="email-address"
@@ -52,6 +54,7 @@ constructor(props) {
                 <TextInput 
                 placeholder="Password"
                 placeholderTextColor='rgba(255,255,255,0.7)'
+                onChangeText={(Value)=>this.setState({password:Value})}
                 returnKeyType="go"
                 secureTextEntry
                 style={styles.input}
