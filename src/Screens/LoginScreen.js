@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, Button} from 'react-native';
+import {View, Text, StyleSheet, Button, Image} from 'react-native';
+import LoginForm from './LoginForm';
 
 export default class LoginScreen extends Component {
   constructor(props) {
@@ -10,8 +11,12 @@ export default class LoginScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text> LoginScreen </Text>
-        <Button title="Login" onPress/>
+        <View style={styles.logocontainer}>
+            <Image 
+              style={styles.logo}
+              source={require('./Image/logo.png')} />
+        </View>
+        <LoginForm />
       </View>
     );
   }
@@ -19,8 +24,17 @@ export default class LoginScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex :1,
-    backgroundColor : '#fff',
+    backgroundColor : '#3498db',
     alignItems :'center',
     justifyContent :'center' 
   },
+  logocontainer: {
+    alignItems: 'center',
+    flexGrow: 1,
+    justifyContent: 'center'
+  },
+  logo: {
+    width: 175,
+    height: 175
+  }
 });
