@@ -51,11 +51,12 @@ const styles = StyleSheet.create({
     buttonContainer: {
         flexDirection: "row",
         justifyContent: "space-between",
-        width: "90%"
+        paddingBottom: 30,    
     },
     userButton: {
         backgroundColor: '#1B1464',
         paddingVertical: 15,
+        paddingHorizontal: 20
          
     },
     buttonText: {
