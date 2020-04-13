@@ -23,10 +23,14 @@ export default class LoginForm extends Component {
                 style={styles.input}
                 ref={(input) => this.passwordInput = input}
                 />
-
-                <TouchableOpacity style={styles.buttonContainer}>
-                    <Text style={styles.buttonText}>LOGIN</Text>
-                </TouchableOpacity>
+                <View style={styles.buttonContainer}>
+                    <TouchableOpacity style={styles.userButton}>
+                        <Text style={styles.buttonText}>LOGIN</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.userButton}>
+                        <Text style={styles.buttonText}>REGISTER</Text>
+                    </TouchableOpacity>
+                </View>
             </KeyboardAvoidingView>
         );
     }
@@ -45,6 +49,11 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
     },
     buttonContainer: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        width: "90%"
+    },
+    userButton: {
         backgroundColor: '#1B1464',
         paddingVertical: 15,
          
@@ -52,6 +61,6 @@ const styles = StyleSheet.create({
     buttonText: {
         textAlign: 'center',
         color: '#FFFFFF',
-        fontSize: '500',
+        fontWeight: '700',
     }
 }); 
