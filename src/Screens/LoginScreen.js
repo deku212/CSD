@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, StatusBar} from 'react-native';
+import {View, Text, StyleSheet, Button} from 'react-native';
 
 export default class LoginScreen extends Component {
   constructor(props) {
@@ -9,10 +9,18 @@ export default class LoginScreen extends Component {
 
   render() {
     return (
-      <View>
-        <StatusBar translucent={true} backgroundColor={'white'} />
+      <View style={styles.container}>
         <Text> LoginScreen </Text>
+        <Button title="Login" onPress/>
       </View>
     );
   }
 }
+const styles = StyleSheet.create({
+  container: {
+    flex :1,
+    backgroundColor : '#fff',
+    alignItems :'center',
+    justifyContent :'center' 
+  },
+});

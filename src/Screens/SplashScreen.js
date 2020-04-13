@@ -22,14 +22,7 @@ export default class SplashScreen extends Component {
     return (
       <React.Fragment>
         <StatusBar translucent={true} backgroundColor={'green'} />
-        <View
-          style={{
-            borderWidth: 2,
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: 'green',
-          }}>
+        <View style={splashStyles.flexBack}>
           <Text style={splashStyles.textHeader}> CSD Inventory </Text>
           <Text style={splashStyles.textHeader}>Management</Text>
           <Text style={splashStyles.textSubHeader}>
@@ -46,6 +39,13 @@ export default class SplashScreen extends Component {
 }
 
 const splashStyles = StyleSheet.create({
+  flexBack: {
+    borderWidth: 2,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'green',
+  },
   textHeader: {
     color: 'white',
     fontSize: 30,
