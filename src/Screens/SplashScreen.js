@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {Component} from 'react';
+import React, {Component, useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -8,15 +8,27 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import {CommonActions} from '@react-navigation/native';
+import auth from '@react-native-firebase/auth';
 
-export default class SplashScreen extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
+export function SplashScreen(props) {
+  const [initializing, setInitializing] = useState(true);
+  const [user, setUser] = useState();
+
+  function onAuthStateChanged(user) {
+    console.log('user', user);
+    setUser(user);
+    if (initializing) {
+      setInitializing(false);
+    }
   }
-  componentDidMount() {
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber; // unsubscribe on unmount
+  });
+
+  if (!initializing) {
     setTimeout(() => {
-      this.props.navigation.dispatch(
+      props.navigation.dispatch(
         CommonActions.reset({
           index: 1,
           routes: [
@@ -28,24 +40,22 @@ export default class SplashScreen extends Component {
       );
     }, 2000);
   }
-  render() {
-    return (
-      <React.Fragment>
-        <StatusBar translucent={true} backgroundColor={'green'} />
-        <View style={splashStyles.flexBack}>
-          <Text style={splashStyles.textHeader}>CSD</Text>
-          <Text style={splashStyles.textHeader1}>Inventory Management</Text>
-          <Text style={splashStyles.textSubHeader}>
-            {' '}
-            An App for defence personal and their Families
-          </Text>
-          <View style={{marginTop: 40}}>
-            <ActivityIndicator size="large" color="#0000ff" />
-          </View>
+  return (
+    <React.Fragment>
+      <StatusBar translucent={true} backgroundColor={'green'} />
+      <View style={splashStyles.flexBack}>
+        <Text style={splashStyles.textHeader}>CSD</Text>
+        <Text style={splashStyles.textHeader1}>Inventory Management</Text>
+        <Text style={splashStyles.textSubHeader}>
+          {' '}
+          An App for defence personal and their Families
+        </Text>
+        <View style={{marginTop: 40}}>
+          <ActivityIndicator size="large" color="#0000ff" />
         </View>
-      </React.Fragment>
-    );
-  }
+      </View>
+    </React.Fragment>
+  );
 }
 
 const splashStyles = StyleSheet.create({
