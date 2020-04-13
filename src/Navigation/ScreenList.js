@@ -1,7 +1,7 @@
 import React from 'react';
 import {createStackNavigator, TransitionSpecs} from '@react-navigation/stack';
 import LoginScreen from '../Screens/LoginScreen';
-import SplashScreen from '../Screens/SplashScreen';
+import {SplashScreen} from '../Screens/SplashScreen';
 
 const Stack = createStackNavigator();
 const config = {

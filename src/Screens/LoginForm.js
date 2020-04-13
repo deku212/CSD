@@ -76,34 +76,34 @@ constructor(props) {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignContent: 'center',
-        justifyContent: 'flex-start'
-    },
-    input: {
-        height: 40,
-        width: 300,
-        backgroundColor: 'rgba(255,255,255,0.3)',
-        marginBottom: 15,
-        color: '#FFF',
-        paddingHorizontal: 20,
-    },
-    buttonContainer: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        paddingBottom: 30,  
-        width: 300  
-    },
-    userButton: {
-        backgroundColor: '#1B1464',
-        padding: 15,
-        paddingHorizontal: 20,
-        width: 135         
-    },
-    buttonText: {
-        textAlign: 'center',
-        color: '#FFFFFF',
-        fontWeight: '700',
-    }
-}); 
+  container: {
+    flex: 1,
+    alignContent: 'center',
+    justifyContent: 'flex-start',
+  },
+  input: {
+    height: 40,
+    width: 300,
+    backgroundColor: 'rgba(255,255,255,0.3)',
+    marginBottom: 15,
+    color: '#FFF',
+    paddingHorizontal: 20,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingBottom: 30,
+    width: 300,
+  },
+  userButton: {
+    backgroundColor: '#1B1464',
+    padding: 15,
+    paddingHorizontal: 20,
+    width: 135,
+  },
+  buttonText: {
+    textAlign: 'center',
+    color: '#FFFFFF',
+    fontWeight: '700',
+  },
+});
