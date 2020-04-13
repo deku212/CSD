@@ -38,7 +38,9 @@ export default class LoginForm extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        padding: 10
+        flex: 1,
+        alignContent: 'center',
+        justifyContent: 'flex-start'
     },
     input: {
         height: 40,
@@ -51,13 +53,14 @@ const styles = StyleSheet.create({
     buttonContainer: {
         flexDirection: "row",
         justifyContent: "space-between",
-        paddingBottom: 30,    
+        paddingBottom: 30,  
+        width: 300  
     },
     userButton: {
         backgroundColor: '#1B1464',
-        paddingVertical: 15,
-        paddingHorizontal: 20
-         
+        padding: 15,
+        paddingHorizontal: 20,
+        width: 135         
     },
     buttonText: {
         textAlign: 'center',
