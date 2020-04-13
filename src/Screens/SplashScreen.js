@@ -7,6 +7,7 @@ import {
   StatusBar,
   ActivityIndicator,
 } from 'react-native';
+import {CommonActions} from '@react-navigation/native';
 
 export default class SplashScreen extends Component {
   constructor(props) {
@@ -15,7 +16,16 @@ export default class SplashScreen extends Component {
   }
   componentDidMount() {
     setTimeout(() => {
-      this.props.navigation.navigate('Login');
+      this.props.navigation.dispatch(
+        CommonActions.reset({
+          index: 1,
+          routes: [
+            {
+              name: 'Login',
+            },
+          ],
+        }),
+      );
     }, 2000);
   }
   render() {
