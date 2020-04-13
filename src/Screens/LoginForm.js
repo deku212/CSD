@@ -4,7 +4,7 @@ import {View, Text, StyleSheet, Image, TextInput, TouchableOpacity, KeyboardAvoi
 export default class LoginForm extends Component {
     render() {
         return (
-            <KeyboardAvoidingView behavior="padding" style={styles.container}>
+            <KeyboardAvoidingView behavior="padding"style={styles.container}>
                 <TextInput 
                 placeholder="Username or Email"
                 placeholderTextColor='rgba(255,255,255,0.7)'
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(255,255,255,0.3)',
         marginBottom: 15,
         color: '#FFF',
-        paddingHorizontal: 20
+        paddingHorizontal: 20,
     },
     buttonContainer: {
         backgroundColor: '#1B1464',
@@ -52,6 +52,6 @@ const styles = StyleSheet.create({
     buttonText: {
         textAlign: 'center',
         color: '#FFFFFF',
-        fontWeight: '700',
+        fontSize: '500',
     }
 }); 

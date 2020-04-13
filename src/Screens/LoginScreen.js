@@ -15,6 +15,10 @@ export default class LoginScreen extends Component {
             <Image 
               style={styles.logo}
               source={require('./Image/logo.png')} />
+
+              <Text style={styles.title}>CSD Demand Store</Text>
+        </View>
+        <View style={styles.formContainer} >
         </View>
         <LoginForm />
       </View>
@@ -31,11 +35,19 @@ const styles = StyleSheet.create({
   logocontainer: {
     alignItems: 'center',
     flexGrow: 1,
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   logo: {
     resizeMode: 'contain',
     width: 175,
     height: 175
+  },
+  title: {
+    color: '#1B1464',
+    width: 200,
+    height: 25,
+    textAlign: 'center',
+    marginTop: 20,
+    opacity: 0.7
   }
 });
