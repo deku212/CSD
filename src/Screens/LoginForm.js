@@ -1,8 +1,42 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, Image, TextInput, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
+import auth from '@react-native-firebase/auth';
 
 export default class LoginForm extends Component {
-    render() {
+constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  login=(email,password)=>{
+      auth().signInWithEmailAndPassword(email, password)
+      .then(()=>{
+        console.log('User has logged in successfully');
+        })
+        .catch(error => {
+            if (error.code === 'auth/invalid-email') {
+              console.log('That email address is invalid!');
+            }
+            console.error(error);
+          });
+  } 
+  register=(email,password)=>{
+      auth().createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        console.log('User account created & signed in!');
+      })
+      .catch(error => {
+        if (error.code === 'auth/email-already-in-use') {
+          console.log('That email address is already in use!');
+        }
+    
+        if (error.code === 'auth/invalid-email') {
+          console.log('That email address is invalid!');
+        }
+    
+        console.error(error);
+      });
+  }
+  render() {
         return (
             <KeyboardAvoidingView behavior="padding"style={styles.container}>
                 <TextInput 
@@ -24,10 +58,12 @@ export default class LoginForm extends Component {
                 ref={(input) => this.passwordInput = input}
                 />
                 <View style={styles.buttonContainer}>
-                    <TouchableOpacity style={styles.userButton}>
+                    <TouchableOpacity style={styles.userButton} 
+                    onPress ={this.login} >
                         <Text style={styles.buttonText}>LOGIN</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.userButton}>
+                    <TouchableOpacity style={styles.userButton}
+                    onPress ={this.register} >
                         <Text style={styles.buttonText}>REGISTER</Text>
                     </TouchableOpacity>
                 </View>
