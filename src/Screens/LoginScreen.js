@@ -31,9 +31,10 @@ const styles = StyleSheet.create({
   logocontainer: {
     alignItems: 'center',
     flexGrow: 1,
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   logo: {
+    resizeMode: 'contain',
     width: 175,
     height: 175
   }
