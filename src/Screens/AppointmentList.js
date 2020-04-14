@@ -10,6 +10,38 @@ export default class AppointmentList extends Component {
   render() {
     return (
       <View style={styles.container}>
+          <KeyboardAvoidingView behavior="padding">
+                <TextInput 
+                placeholder="Select Date"
+                placeholderTextColor='rgba(255,255,255,0.7)'
+                onChangeText={(Value)=>this.setState({date:Value})}
+                returnKeyType="next"
+                onSubmitEditing={() => this.passwordInput.focus()}
+                keyboardType="email-address"
+                autoCapitalize="none"
+                autoCorrect={false}
+                style={styles.input}
+                />
+                <TextInput 
+                placeholder="Password"
+                placeholderTextColor='rgba(255,255,255,0.7)'
+                onChangeText={(Value)=>this.setState({password:Value})}
+                returnKeyType="go"
+                secureTextEntry
+                style={styles.input}
+                ref={(input) => this.passwordInput = input}
+                />
+                <View style={styles.buttonContainer}>
+                    <TouchableOpacity style={styles.userButton} 
+                    onPress ={this.login} >
+                        <Text style={styles.buttonText}>LOGIN</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.userButton}
+                    onPress ={this.props.navigation.navigate('Register')} >
+                        <Text style={styles.buttonText}>REGISTER</Text>
+                    </TouchableOpacity>
+                </View>
+            </KeyboardAvoidingView>
               <Text style={styles.title}>CSD Demand Store</Text>
       </View>
     );

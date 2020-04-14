@@ -17,7 +17,7 @@ export default class LoginScreen extends Component {
           <Text style={styles.title}>CSD Demand Store</Text>
         </View>
         <View style={styles.formContainer}>
-          <LoginForm />
+          <LoginForm navigation={this.props.navigation} />
         </View>
       </View>
     );
