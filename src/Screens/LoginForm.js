@@ -38,6 +38,7 @@ export default class LoginForm extends Component {
       });
   };
   render() {
+    console.log("render")
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
         <TextInput
@@ -66,7 +67,7 @@ export default class LoginForm extends Component {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.userButton}
-            onPress={this.props.navigation.navigate('Register')}>
+            onPress={() => this.props.navigation.navigate('Register')}>
             <Text style={styles.buttonText}>REGISTER</Text>
           </TouchableOpacity>
         </View>

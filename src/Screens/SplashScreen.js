@@ -17,8 +17,10 @@ export function SplashScreen(props) {
   function onAuthStateChanged(user) {
     console.log('user', user);
     setUser(user);
-    if (initializing) {
-      setInitializing(false);
+    if (initializing && user) {
+      setTimeout(() => {
+        setInitializing(false);
+      }, 2000);
     }
   }
   useEffect(() => {
@@ -27,18 +29,17 @@ export function SplashScreen(props) {
   });
 
   if (!initializing) {
-    setTimeout(() => {
-      props.navigation.dispatch(
-        CommonActions.reset({
-          index: 1,
-          routes: [
-            {
-              name: 'Login',
-            },
-          ],
-        }),
-      );
-    }, 2000);
+    console.log('initialising');
+    props.navigation.dispatch(
+      CommonActions.reset({
+        index: 1,
+        routes: [
+          {
+            name: 'Login',
+          },
+        ],
+      }),
+    );
   }
   return (
     <React.Fragment>
