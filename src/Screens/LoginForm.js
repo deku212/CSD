@@ -15,9 +15,7 @@ constructor(props) {
         console.log('User has logged in successfully');
         })
         .catch(error => {
-            if (error.code === 'auth/invalid-email') {
-              c
-            }
+            if (error.code === 'auth/invalid-email') 
             console.error(error);
           });
   } 
@@ -59,7 +57,7 @@ constructor(props) {
                         <Text style={styles.buttonText}>LOGIN</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.userButton}
-                    onPress ={this.props.navigatio.navigate('RegisterForm')} >
+                    onPress ={this.props.navigation.navigate('Register')} >
                         <Text style={styles.buttonText}>REGISTER</Text>
                     </TouchableOpacity>
                 </View>

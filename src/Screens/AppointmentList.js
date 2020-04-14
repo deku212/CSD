@@ -10,14 +10,7 @@ export default class AppointmentList extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.logocontainer}>
-          <Image style={styles.logo} source={require('./Image/logo.png')} />
-
-          <Text style={styles.title}>CSD Demand Store</Text>
-        </View>
-        <View style={styles.formContainer}>
-          <LoginForm />
-        </View>
+              <Text style={styles.title}>CSD Demand Store</Text>
       </View>
     );
   }

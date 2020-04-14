@@ -33,7 +33,7 @@ export function SplashScreen(props) {
           index: 1,
           routes: [
             {
-              name: 'Login',
+              name: 'Login', 
             },
           ],
         }),
