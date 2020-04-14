@@ -1,71 +1,78 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, Image, TextInput, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TextInput,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+} from 'react-native';
 import auth from '@react-native-firebase/auth';
-import { Value } from 'react-native-reanimated';
-import RegisterForm from './RegisterForm';
 
 export default class LoginForm extends Component {
-constructor(props) {
+  constructor(props) {
     super(props);
-    this.state = {email:'',password:''};
+    this.state = {email: '', password: ''};
   }
-  login=()=>{
-      auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-      .then(()=>{
+  login = () => {
+    auth()
+      .signInWithEmailAndPassword(this.state.email, this.state.password)
+      .then(() => {
         console.log('User has logged in successfully');
-        })
-        .catch(error => {
-            if (error.code === 'auth/invalid-email') {
-              c
-            }
-            console.error(error);
-          });
-  } 
-  register=()=>{
-      auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then(()=>{
-        console.log('Null Value'); 
       })
-      .catch(error=> {      
-      <RegisterForm/>
+      .catch(error => {
+        if (error.code === 'auth/invalid-email') {
+        }
+        console.error(error);
       });
-  }
+  };
+  register = () => {
+    auth()
+      .createUserWithEmailAndPassword(this.state.email, this.state.password)
+      .then(() => {
+        console.log('Null Value');
+      })
+      .catch(error => {
+        console.log('Null Value');
+      });
+  };
   render() {
-        return (
-            <KeyboardAvoidingView behavior="padding"style={styles.container}>
-                <TextInput 
-                placeholder="Username or Email"
-                placeholderTextColor='rgba(255,255,255,0.7)'
-                onChangeText={(Value)=>this.setState({email:Value})}
-                returnKeyType="next"
-                onSubmitEditing={() => this.passwordInput.focus()}
-                keyboardType="email-address"
-                autoCapitalize="none"
-                autoCorrect={false}
-                style={styles.input}
-                />
-                <TextInput 
-                placeholder="Password"
-                placeholderTextColor='rgba(255,255,255,0.7)'
-                onChangeText={(Value)=>this.setState({password:Value})}
-                returnKeyType="go"
-                secureTextEntry
-                style={styles.input}
-                ref={(input) => this.passwordInput = input}
-                />
-                <View style={styles.buttonContainer}>
-                    <TouchableOpacity style={styles.userButton} 
-                    onPress ={this.login} >
-                        <Text style={styles.buttonText}>LOGIN</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.userButton}
-                    onPress ={this.props.navigatio.navigate('RegisterForm')} >
-                        <Text style={styles.buttonText}>REGISTER</Text>
-                    </TouchableOpacity>
-                </View>
-            </KeyboardAvoidingView>
-        );
-    }
+    return (
+      <KeyboardAvoidingView behavior="padding" style={styles.container}>
+        <TextInput
+          placeholder="Username or Email"
+          placeholderTextColor="rgba(255,255,255,0.7)"
+          onChangeText={value => this.setState({email: value})}
+          returnKeyType="next"
+          onSubmitEditing={() => this.passwordInput.focus()}
+          keyboardType="email-address"
+          autoCapitalize="none"
+          autoCorrect={false}
+          style={styles.input}
+        />
+        <TextInput
+          placeholder="Password"
+          placeholderTextColor="rgba(255,255,255,0.7)"
+          onChangeText={value => this.setState({password: value})}
+          returnKeyType="go"
+          secureTextEntry
+          style={styles.input}
+          ref={input => (this.passwordInput = input)}
+        />
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.userButton} onPress={this.login}>
+            <Text style={styles.buttonText}>LOGIN</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.userButton}
+            onPress={this.props.navigation.navigate('Register')}>
+            <Text style={styles.buttonText}>REGISTER</Text>
+          </TouchableOpacity>
+        </View>
+      </KeyboardAvoidingView>
+    );
+  }
 }
 
 const styles = StyleSheet.create({

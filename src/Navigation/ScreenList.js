@@ -2,7 +2,7 @@ import React from 'react';
 import {createStackNavigator, TransitionSpecs} from '@react-navigation/stack';
 import LoginScreen from '../Screens/LoginScreen';
 import {SplashScreen} from '../Screens/SplashScreen';
-
+import RegisterForm from '../Screens/RegisterForm';
 const Stack = createStackNavigator();
 const config = {
   animation: 'spring',
@@ -30,6 +30,7 @@ function ScreenList() {
         }}
       />
       <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="Register" component={LoginScreen} />
     </Stack.Navigator>
   );
 }
