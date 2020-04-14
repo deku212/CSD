@@ -2,32 +2,27 @@ import React, {Component} from 'react';
 import {View, Text, StyleSheet, Image, TextInput, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
 import auth from '@react-native-firebase/auth';
 import { Value } from 'react-native-reanimated';
-import RegisterForm from './RegisterForm';
 
-export default class LoginForm extends Component {
+export default class RegisterForm extends Component {
 constructor(props) {
     super(props);
     this.state = {email:'',password:''};
   }
-  login=()=>{
-      auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-      .then(()=>{
-        console.log('User has logged in successfully');
-        })
-        .catch(error => {
-            if (error.code === 'auth/invalid-email') {
-              c
-            }
-            console.error(error);
-          });
-  } 
   register=()=>{
       auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then(()=>{
-        console.log('Null Value'); 
+      .then(() => {
+        console.log('User account created & signed in!');
       })
-      .catch(error=> {      
-      <RegisterForm/>
+      .catch(error => {
+        if (error.code === 'auth/email-already-in-use') {
+          console.log('That email address is already in use!');
+        }
+    
+        if (error.code === 'auth/invalid-email') {
+          console.log('That email address is invalid!');
+        }
+    
+        console.error(error);
       });
   }
   render() {
@@ -53,13 +48,18 @@ constructor(props) {
                 style={styles.input}
                 ref={(input) => this.passwordInput = input}
                 />
+                <TextInput 
+                placeholder="Retype password"
+                placeholderTextColor='rgba(255,255,255,0.7)'
+                onChangeText={(Value)=>this.setState({password:Value})}
+                returnKeyType="go"
+                secureTextEntry
+                style={styles.input}
+                ref={(input) => this.passwordInput = input}
+                />
                 <View style={styles.buttonContainer}>
-                    <TouchableOpacity style={styles.userButton} 
-                    onPress ={this.login} >
-                        <Text style={styles.buttonText}>LOGIN</Text>
-                    </TouchableOpacity>
                     <TouchableOpacity style={styles.userButton}
-                    onPress ={this.props.navigatio.navigate('RegisterForm')} >
+                    onPress ={this.register} >
                         <Text style={styles.buttonText}>REGISTER</Text>
                     </TouchableOpacity>
                 </View>
@@ -84,7 +84,6 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     paddingBottom: 30,
     width: 300,
   },
@@ -92,7 +91,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#1B1464',
     padding: 15,
     paddingHorizontal: 20,
-    width: 135,
+    width: 300
   },
   buttonText: {
     textAlign: 'center',
