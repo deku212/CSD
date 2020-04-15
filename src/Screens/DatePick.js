@@ -15,7 +15,7 @@ export default class DatePick extends Component {
       <Container>
         <Header />
         <Content>
-          <Select Date
+          <DatePicker
             defaultDate={new Date(2020, 4, 1)}
             minimumDate={new Date(2020, 1, 1)}
             maximumDate={new Date(2030, 12, 31)}

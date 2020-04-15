@@ -16,7 +16,7 @@ export default class AppointmentList extends Component {
                 <TextInput 
                 placeholder="Select Date"
                 placeholderTextColor='rgba(255,255,255,0.7)'
-                onAccessibilityAction={() => this.props.navigation.navigate('Date')}
+                onTouchStart={() => this.props.navigation.navigate('Date')}
                 onChangeText={(Value)=>this.setState({date:Value})}
                 returnKeyType="next"
                 onSubmitEditing={() => this.passwordInput.focus()}
