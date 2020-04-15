@@ -45,8 +45,8 @@ export function SplashScreen(props) {
     <React.Fragment>
       <StatusBar translucent={true} backgroundColor={'green'} />
       <View style={splashStyles.flexBack}>
-        <Text style={splashStyles.textHeader}>CSD</Text>
-        <Text style={splashStyles.textHeader1}>Inventory Management</Text>
+        <Text style={splashStyles.textHeader}>ECHS</Text>
+        <Text style={splashStyles.textHeader1}>Appoinment Schedular</Text>
         <Text style={splashStyles.textSubHeader}>
           {' '}
           An App for defence personal and their Families

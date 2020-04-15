@@ -3,6 +3,10 @@ import {createStackNavigator, TransitionSpecs} from '@react-navigation/stack';
 import LoginScreen from '../Screens/LoginScreen';
 import {SplashScreen} from '../Screens/SplashScreen';
 import RegisterForm from '../Screens/RegisterForm';
+import UserPage from '../Screens/UserPage';
+import AppointmentList from '../Screens/AppointmentList';
+//import OldAppointment from '../Screens/OldAppointment';
+
 const Stack = createStackNavigator();
 
 function ScreenList() {
@@ -16,7 +20,9 @@ function ScreenList() {
         }}
       />
       <Stack.Screen name="Login" component={LoginScreen} />
-      <Stack.Screen name="Register" component={LoginScreen} />
+      <Stack.Screen name="Register" component={RegisterForm} />
+      <Stack.Screen name="Create Appointment" component={AppointmentList} />
+      <Stack.Screen name="Welcome" component={UserPage} />
     </Stack.Navigator>
   );
 }

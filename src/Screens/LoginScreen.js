@@ -14,7 +14,7 @@ export default class LoginScreen extends Component {
         <View style={styles.logocontainer}>
           <Image style={styles.logo} source={require('./Image/logo.png')} />
 
-          <Text style={styles.title}>CSD Demand Store</Text>
+          <Text style={styles.title}>ECHS user login</Text>
         </View>
         <View style={styles.formContainer}>
           <LoginForm navigation={this.props.navigation} />

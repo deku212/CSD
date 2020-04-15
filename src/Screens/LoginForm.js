@@ -15,10 +15,12 @@ export default class LoginForm extends Component {
     super(props);
     this.state = {email: '', password: ''};
   }
+  
   login = () => {
     auth()
       .signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(() => {
+        this.props.navigation.navigate('Welocme',{ screen:'UserPage'})
         console.log('User has logged in successfully');
       })
       .catch(error => {
@@ -27,6 +29,7 @@ export default class LoginForm extends Component {
         console.error(error);
       });
   };
+
   register = () => {
     auth()
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
@@ -89,6 +92,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     color: '#FFF',
     paddingHorizontal: 20,
+    fontSize: 17
   },
   buttonContainer: {
     flexDirection: 'row',
