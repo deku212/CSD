@@ -5,6 +5,7 @@ import {SplashScreen} from '../Screens/SplashScreen';
 import RegisterForm from '../Screens/RegisterForm';
 import UserPage from '../Screens/UserPage';
 import AppointmentList from '../Screens/AppointmentList';
+import DatePick from '../Screens/DatePick';
 //import OldAppointment from '../Screens/OldAppointment';
 
 const Stack = createStackNavigator();
@@ -23,6 +24,7 @@ function ScreenList() {
       <Stack.Screen name="Register" component={RegisterForm} />
       <Stack.Screen name="Create Appointment" component={AppointmentList} />
       <Stack.Screen name="Welcome" component={UserPage} />
+      <Stack.Screen name="Date" component={DatePick} />
     </Stack.Navigator>
   );
 }

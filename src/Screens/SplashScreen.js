@@ -17,7 +17,7 @@ export function SplashScreen(props) {
   function onAuthStateChanged(user) {
     console.log('user', user);
     setUser(user);
-    if (initializing && user) {
+    if (initializing) {
       setTimeout(() => {
         setInitializing(false);
       }, 2000);

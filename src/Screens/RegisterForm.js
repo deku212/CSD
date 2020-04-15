@@ -20,6 +20,7 @@ export default class RegisterForm extends Component {
     auth()
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
       .then(() => {
+        this.props.navigation.navigate('Welcome');
         console.log('User account created & signed in!');
       })
       .catch(error => {

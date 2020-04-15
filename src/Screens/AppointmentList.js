@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, Button, Image} from 'react-native';
+import {View, Text, StyleSheet, Button, 
+  Image, KeyboardAvoidingView, TextInput, TouchableOpacity} from 'react-native';
+import DatePick from './DatePick';
 
 export default class AppointmentList extends Component {
   constructor(props) {
@@ -14,6 +16,7 @@ export default class AppointmentList extends Component {
                 <TextInput 
                 placeholder="Select Date"
                 placeholderTextColor='rgba(255,255,255,0.7)'
+                onAccessibilityAction={() => this.props.navigation.navigate('Date')}
                 onChangeText={(Value)=>this.setState({date:Value})}
                 returnKeyType="next"
                 onSubmitEditing={() => this.passwordInput.focus()}

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {CommonActions} from '@react-navigation/native';
 import {
   View,
   Text,
@@ -20,7 +21,19 @@ export default class UserPage extends Component {
   logout = () => {
     auth()
       .signOut()
-      .then(() => console.log('User signed out!'));
+      .then(() => {
+        this.props.navigation.dispatch(
+          CommonActions.reset({
+            index: 1,
+            routes: [
+              {
+                name: 'Login',
+              },
+            ],
+          }),
+        );
+      console.log('User signed out!');
+      })
   };
 
   render() {
