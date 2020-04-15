@@ -1,6 +1,15 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, Button, 
-  Image, KeyboardAvoidingView, TextInput, TouchableOpacity} from 'react-native';
+import getRefDatabase from '../Database/Database';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Button,
+  Image,
+  KeyboardAvoidingView,
+  TextInput,
+  TouchableOpacity,
+} from 'react-native';
 import DatePick from './DatePick';
 
 export default class AppointmentList extends Component {
@@ -9,50 +18,54 @@ export default class AppointmentList extends Component {
     this.state = {};
   }
 
+  componentDidMount() {
+    getRefDatabase();
+  }
+
   render() {
     return (
       <View style={styles.container}>
-          <KeyboardAvoidingView behavior="padding">
-                <TextInput 
-                placeholder="Select Date"
-                placeholderTextColor='rgba(255,255,255,0.7)'
-                onTouchStart={() => this.props.navigation.navigate('Date')}
-                onChangeText={(Value)=>this.setState({date:Value})}
-                returnKeyType="next"
-                onSubmitEditing={() => this.passwordInput.focus()}
-                autoCapitalize="none"
-                autoCorrect={false}
-                style={styles.input}
-                />
-                <TextInput 
-                placeholder="Nature of illness"
-                placeholderTextColor='rgba(255,255,255,0.7)'
-                onChangeText={(Value)=>this.setState({problem:Value})}
-                returnKeyType="next"
-                style={styles.input}
-                />
-                <TextInput 
-                placeholder="Last visited on"
-                placeholderTextColor='rgba(255,255,255,0.7)'
-                onChangeText={(Value)=>this.setState({lastvisit:Value})}
-                returnKeyType="next"
-                style={styles.input}
-                />
-                 <TextInput 
-                placeholder="Describe the illness"
-                placeholderTextColor='rgba(255,255,255,0.7)'
-                onChangeText={(Value)=>this.setState({illness:Value})}
-                returnKeyType="go"
-                style={styles.input1}
-                ref={(input) => this.passwordInput = input}
-                />
-                <View style={styles.buttonContainer}>
-                    <TouchableOpacity style={styles.userButton} 
-                    onPress ={this.login} >
-                        <Text style={styles.buttonText}>Schedule</Text>
-                    </TouchableOpacity>
-                </View>
-            </KeyboardAvoidingView>
+        <KeyboardAvoidingView behavior="padding">
+          {/* <TextInput
+            placeholder="Select Date"
+            placeholderTextColor="rgba(255,255,255,0.7)"
+            onTouchStart={() => this.props.navigation.navigate('Date')}
+            onChangeText={Value => this.setState({date: Value})}
+            returnKeyType="next"
+            onSubmitEditing={() => this.passwordInput.focus()}
+            autoCapitalize="none"
+            autoCorrect={false}
+            style={styles.input}
+          /> */}
+          <DatePick />
+          <TextInput
+            placeholder="Nature of illness"
+            placeholderTextColor="rgba(255,255,255,0.7)"
+            onChangeText={Value => this.setState({problem: Value})}
+            returnKeyType="next"
+            style={styles.input}
+          />
+          <TextInput
+            placeholder="Last visited on"
+            placeholderTextColor="rgba(255,255,255,0.7)"
+            onChangeText={Value => this.setState({lastvisit: Value})}
+            returnKeyType="next"
+            style={styles.input}
+          />
+          <TextInput
+            placeholder="Describe the illness"
+            placeholderTextColor="rgba(255,255,255,0.7)"
+            onChangeText={Value => this.setState({illness: Value})}
+            returnKeyType="go"
+            style={styles.input1}
+            ref={input => (this.passwordInput = input)}
+          />
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity style={styles.userButton} onPress={this.login}>
+              <Text style={styles.buttonText}>Schedule</Text>
+            </TouchableOpacity>
+          </View>
+        </KeyboardAvoidingView>
       </View>
     );
   }
@@ -96,5 +109,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#FFFFFF',
     fontWeight: '700',
-  }
+  },
 });
