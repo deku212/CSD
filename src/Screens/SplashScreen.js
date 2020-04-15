@@ -30,16 +30,29 @@ export function SplashScreen(props) {
 
   if (!initializing) {
     console.log('initialising');
-    props.navigation.dispatch(
-      CommonActions.reset({
-        index: 1,
-        routes: [
-          {
-            name: 'Login',
-          },
-        ],
-      }),
-    );
+    if (user) {
+      props.navigation.dispatch(
+        CommonActions.reset({
+          index: 1,
+          routes: [
+            {
+              name: 'Welcome',
+            },
+          ],
+        }),
+      );
+    } else {
+      props.navigation.dispatch(
+        CommonActions.reset({
+          index: 1,
+          routes: [
+            {
+              name: 'Login',
+            },
+          ],
+        }),
+      );
+    }
   }
   return (
     <React.Fragment>

@@ -15,12 +15,12 @@ export default class LoginForm extends Component {
     super(props);
     this.state = {email: '', password: ''};
   }
-  
+
   login = () => {
     auth()
       .signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(() => {
-        this.props.navigation.navigate('Welocme',{ screen:'UserPage'})
+        this.props.navigation.navigate('Welcome');
         console.log('User has logged in successfully');
       })
       .catch(error => {
@@ -41,7 +41,7 @@ export default class LoginForm extends Component {
       });
   };
   render() {
-    console.log("render")
+    console.log('render');
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
         <TextInput
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     color: '#FFF',
     paddingHorizontal: 20,
-    fontSize: 17
+    fontSize: 17,
   },
   buttonContainer: {
     flexDirection: 'row',
